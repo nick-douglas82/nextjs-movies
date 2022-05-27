@@ -3,7 +3,7 @@ import { formatPerson } from "../lib/helpers/format";
 import { Cast, ICredits } from "../types/credits";
 import List from "./List";
 
-const Credits = ({ credits }: { credits: ICredits }) => {
+const Credits: React.FC<{ credits: ICredits }> = ({ credits }) => {
   const cast = credits.cast.slice(0, 6).map((item: Cast) => formatPerson(item));
   return (
     <div className="mt-5 text-gray-400 mb-9">

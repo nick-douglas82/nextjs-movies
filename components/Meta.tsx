@@ -10,7 +10,7 @@ export interface Meta {
   }
 }
 
-const Meta = ({ item }: Meta) => {
+const Meta: React.FC<Meta> = ({ item }) => {
   const runtime = (item?.episode_run_time) ? item.episode_run_time[0] : item.runtime;
   const date = (item?.first_air_date) ? item.first_air_date : item.release_date;
   return (

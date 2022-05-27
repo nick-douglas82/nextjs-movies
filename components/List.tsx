@@ -6,7 +6,7 @@ type ListProps = {
   listData: IListItem[],
 };
 
-const List = ({ title, listData }: ListProps) => {
+const List: React.FC<ListProps> = ({ title, listData }) => {
   return (
     <>
       {title && (<div className="flex items-center pb-5 mt-14">

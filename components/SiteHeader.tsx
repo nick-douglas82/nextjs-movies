@@ -1,7 +1,11 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
 
-const SiteHeader = () => {
+export type SiteHeaderProps = {
+  hideNav?: boolean
+}
+
+const SiteHeader: React.FC<SiteHeaderProps> = ({ hideNav }) => {
   const router = useRouter();
 
   return (
@@ -13,7 +17,7 @@ const SiteHeader = () => {
           </h1>
         </a>
       </Link>
-      <nav className="w-full my-5">
+      {!hideNav && <nav className="w-full my-5">
         <ul className="flex items-center justify-center w-full">
           <li className={router.pathname == "/movies" ? "text-orange-400" : ""}>
             <Link href="/movies">
@@ -31,7 +35,7 @@ const SiteHeader = () => {
             </Link>
           </li>
         </ul>
-      </nav>
+      </nav>}
     </>
   )
 }

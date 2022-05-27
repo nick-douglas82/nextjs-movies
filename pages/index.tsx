@@ -4,6 +4,7 @@ import { InferGetStaticPropsType } from 'next'
 import List from '../components/List'
 import SiteHeader from '../components/SiteHeader'
 import { formatMovie, formatTvShow, Movie, TvShow } from '../lib/helpers/format'
+import Link from 'next/link'
 
 const Home = ({ movies, tv }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -14,7 +15,11 @@ const Home = ({ movies, tv }: InferGetStaticPropsType<typeof getStaticProps>) =>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="mx-auto mt-10 max-w-7xl">
+      <main className="mx-auto max-w-7xl">
+        <div className="w-full mt-5 mb-10 text-right">
+          <Link href="/login">
+            <a className="font-bold text-orange-400 transition-all hover:text-black">Login</a>
+          </Link></div>
         <SiteHeader />
         <List title="Today&apos;s trending movies" listData={movies} />
         <List title="Today&apos;s trending tv" listData={tv} />

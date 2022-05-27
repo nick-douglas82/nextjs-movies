@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { formatShortMonthDate } from '../lib/helpers/date';
 import { IListItem } from '../lib/helpers/format';
 
-const ListItem = ({ title, poster, type, id, date }: IListItem) => {
+const ListItem: React.FC<IListItem> = ({ title, poster, type, id, date }) => {
   return (
     <li className='relative flex flex-col'>
       <Link href={`/${type}/${id}`}>
