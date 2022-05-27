@@ -29,7 +29,7 @@ export interface TvShow {
 export interface Person {
   id: number;
   name: string;
-  birthday: string;
+  birthday?: string;
   profile_path: string;
 }
 

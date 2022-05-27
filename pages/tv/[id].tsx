@@ -1,10 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { GetStaticPaths, GetStaticProps } from 'next/types'
+import type { ICredits } from '../../types/credits';
 import { formatYear } from '../../lib/helpers/date';
 import SiteHeader from '../../components/SiteHeader'
 import Meta from '../../components/Meta';
 import Credits from '../../components/Credits';
+
 
 export interface TVData {
   tv: {
@@ -21,7 +23,7 @@ export interface TVData {
     }];
     first_air_date: string;
   },
-  credits: {}
+  credits: ICredits
 }
 
 const Movie = ({ tv, credits }: TVData) => {
