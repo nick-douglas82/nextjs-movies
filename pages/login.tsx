@@ -1,16 +1,23 @@
+import Router from "next/router"
+import { authenticateUser } from "../auth"
 import SiteHeader from "../components/SiteHeader"
 
 const Login = () => {
+  const handleSubmit = (e: any) => {
+    e.preventDefault()
+    authenticateUser()
+    Router.push('/')
+  }
+
   return (
     <main className="flex items-center justify-center h-full mx-auto max-w-7xl">
-
       <div className="flex items-center justify-center min-h-full px-4 py-12 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
             <SiteHeader hideNav={true} />
             <h2 className="mt-6 text-3xl font-extrabold text-center text-gray-900">Sign in to your account</h2>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form className="mt-8 space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>

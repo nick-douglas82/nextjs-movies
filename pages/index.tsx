@@ -1,10 +1,13 @@
 import Head from 'next/head'
 import { InferGetStaticPropsType } from 'next'
+import Link from 'next/link'
+import { formatMovie, formatTvShow, Movie, TvShow } from '../lib/helpers/format'
+
+import { isAuthenticated } from '../auth'
+const authenticated = isAuthenticated()
 
 import List from '../components/List'
 import SiteHeader from '../components/SiteHeader'
-import { formatMovie, formatTvShow, Movie, TvShow } from '../lib/helpers/format'
-import Link from 'next/link'
 
 const Home = ({ movies, tv }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -16,10 +19,17 @@ const Home = ({ movies, tv }: InferGetStaticPropsType<typeof getStaticProps>) =>
       </Head>
 
       <main className="mx-auto max-w-7xl">
-        <div className="w-full mt-5 mb-10 text-right">
-          <Link href="/login">
-            <a className="font-bold text-orange-400 transition-all hover:text-black">Login</a>
-          </Link></div>
+        <nav className="w-full mt-5 mb-10 text-right">
+          {!authenticated && <Link href="/login">
+            <a className="mr-5 font-bold text-orange-400 transition-all hover:text-black">Login</a>
+          </Link>}
+          {authenticated && <Link href="/">
+            <a className="mr-5 font-bold text-orange-400 transition-all hover:text-black">Logout</a>
+          </Link>}
+          {authenticated && <Link href="/lists">
+            <a className="font-bold text-orange-400 transition-all hover:text-black">Your Lists</a>
+          </Link>}
+        </nav>
         <SiteHeader />
         <List title="Today&apos;s trending movies" listData={movies} />
         <List title="Today&apos;s trending tv" listData={tv} />
